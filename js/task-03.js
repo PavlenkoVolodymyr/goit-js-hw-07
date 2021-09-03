@@ -16,12 +16,10 @@ const images = [
   },
 ]
 
-const createGalleryItem = ({ url, alt }) =>
-  `<li><img src="${url}" alt="${alt}" width = 200 height = 150></li>`
-const galleryMarkup = images.reduce(
-  (acc, item) => acc + createGalleryItem(item),
-  '',
-)
-const galleryList = document.querySelector('#gallery')
-galleryList.insertAdjacentHTML('afterbegin', galleryMarkup)
-galleryList.setAttribute('style', 'list-style-type:none; display: flex;')
+const ulEl = document.querySelector('#gallery')
+images.forEach((el) => {
+  ulEl.insertAdjacentHTML(
+    'afterbegin',
+    `<li><img src = "${el.url}" alt = "${el.alt}"  width = "150" height = "100" /></li>`,
+  )
+})
